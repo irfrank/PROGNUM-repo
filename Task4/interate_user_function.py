@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[4]:
 
 
 from math import *
@@ -30,15 +30,28 @@ print(function_user(f,2))
 def function(x):
     f=x**4 + e**(sin(x)+cos(x))
     return f
-
-a=0
-b=pi
-area, error=integrate.quad(function,a,b)
-print(f"The Area between x={a} and x={b} is {area} with error {error}")
-    
-#monte carlo integration
-x=np.random.uniform(a, b, size=1000000)
-y_values=function(x)
-integral=(b-a)*np.mean(y_values)
-print(f"The Monte Carlo integration result: {integral}")
+try:
+    a=0
+    b=pi
+    area, error=integrate.quad(function,a,b)        
+    print(f"The Area between x={a} and x={b} is {area} with error {error}")
+except NameError:
+    print("Name Error: Unknown variable")
+except SyntaxError:
+    print("Syntax Error: invalid mathematical expression")
+except Exceptions:
+    print("Unknown Error")
+ 
+ #monte carlo integration
+try:
+    x=np.random.uniform(a, b, size=1000000)
+    y_values=function(x)
+    integral=(b-a)*np.mean(y_values)
+    print(f"The Monte Carlo integration result: {integral}")
+except NameError:
+    print("Name Error: Unknown variable")
+except SyntaxError:
+    print("Syntax Error: invalid mathematical expression")
+except Exceptions:
+    print("Unknown Error")
 
